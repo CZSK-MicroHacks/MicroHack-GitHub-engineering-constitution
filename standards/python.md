@@ -13,31 +13,35 @@ Applies to all Python services, data scripts, and AI agents maintained by MicroH
 
 ## 3. Project Layout
 ```
-app/
-  __init__.py
-  routes/
-  services/
-  repositories/
-  models/
-  schemas/
- tests/
- docs/
+.
+├── main.py           # Application entry point and route definitions
+├── models.py         # Pydantic models and schemas
+├── database.py       # Database service layer and connection logic
+├── config.py         # Configuration and environment variable handling
+├── requirements.txt  # Python dependencies
+├── start.sh          # Startup and setup script
+├── Dockerfile        # Container definition
+└── tests/            # Test files (e.g., test_main.py)
 ```
-- `models/` contains Pydantic schemas shared across routes/services.
-- Keep infrastructure code (infra as code, scripts) in dedicated folders to avoid polluting application packages.
+- Use a flat structure for microservices to reduce complexity.
+- `models.py` contains Pydantic schemas.
+- `database.py` encapsulates all database logic (connection, CRUD, queries).
+- `config.py` manages environment variables and application settings.
 
 ## 4. Dependencies & Packaging
-- Use `uv` with `pyproject.toml` as the single dependency manifest; avoid `requirements.txt` unless exporting for third-party needs.
-- Pin indirect dependencies via `uv lock` to ensure repeatable builds.
-- Prohibit unmaintained or unlicensed packages; security reviews run via `pip-audit` or `safety`.
+- Use `pip` with `requirements.txt` for dependency management.
+- Use standard `venv` for virtual environments.
+- Include a `start.sh` script to automate environment setup, virtual env creation, and dependency installation.
+- Pin dependencies in `requirements.txt` to ensure repeatable builds.
 
 ## 5. Logging & Observability
-- Use the standard `logging` library with structured log adapters (JSON when running in Kubernetes or Functions).
-- No `print` statements in production code.
+- Use the standard `logging` library configured in `main.py`.
+- No `print` statements in production code; use `logger.info()`, `logger.error()`, etc.
 - Log at INFO for lifecycle events, DEBUG for diagnostics, WARNING for recoverable anomalies, ERROR for failures.
 
 ## 6. Error Handling & Resilience
-- Bubble validation errors with meaningful messages; prefer custom exception classes over raw `ValueError`.
+- Use FastAPI's `HTTPException` for API errors with appropriate status codes.
+- Bubble validation errors with meaningful messages.
 - Wrap external IO (DB, HTTP, queues) with retry-capable clients. Include exponential backoff and jitter for transient failures.
 - For Azure Cosmos DB usage, reuse a singleton `CosmosClient`, honor `Retry-After` headers, and log diagnostics when latency or status codes deviate from expectations.
 
@@ -48,7 +52,8 @@ app/
 - Ensure Specification by Example scenarios exist as automated tests before implementing major behavior.
 
 ## 8. Security
-- Load secrets from managed stores (Key Vault, secrets manager). Never commit credentials.
+- Load secrets from environment variables using `.env` files (local) or managed identity (cloud).
+- Use `.env.example` to document required environment variables without committing secrets.
 - Enforce dependency scanning and formatting in CI: `ruff`, `mypy`, `pytest`, `pip-audit` (or equivalent) must pass before merge.
 - Validate all untrusted inputs via Pydantic models before use.
 
