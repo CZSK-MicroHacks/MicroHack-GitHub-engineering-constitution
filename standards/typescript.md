@@ -31,7 +31,7 @@ tests/
 
 ## 5. State & Data Flow
 - Favor React Query or SWR for remote data caching; avoid bespoke fetch wrappers unless necessary.
-- For global state, use Redux Toolkit or Zustand with typed selectors; document state shape in `docs/DATA_MODELS.md`.
+- For global state, use Redux Toolkit or Zustand with typed selectors; document state shape in `specs/**/DATA_MODELS.md`.
 - Keep GraphQL/REST clients typed via code generation (OpenAPI, GraphQL Code Generator) to align with Specification by Example contracts.
 
 ## 6. Testing
@@ -47,8 +47,9 @@ tests/
 
 ## 8. Documentation & Specs
 - Keep Storybook (or equivalent) stories updated for major components; treat them as living documentation tied to Specification by Example scenarios.
-- Mirror API contracts in `docs/API_REFERENCE.md` and regenerate client types whenever the backend spec changes.
-- Record architectural decisions (state management choices, caching strategy) as ADRs using the provided template.
+- Mirror API contracts in `specs/**/contracts/` and regenerate client types whenever the backend spec changes.
+- Record architectural decisions (state management choices, caching strategy) as ADRs in `specs/**/decisions/`.
+- Maintain `docs/IMPLEMENTATION_LOG.md` and `docs/COMMON_ERRORS.md` for operational insights.
 
 ## 9. CI/CD Expectations
 - Run `eslint`, `prettier --check`, unit tests, type checks (`tsc --noEmit`), and dependency scans in CI.

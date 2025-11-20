@@ -3,6 +3,7 @@
 Use this folder for documentation that spans multiple services within a monorepo. Keep it lightweight—only add documents when a contract or decision truly applies to more than one service.
 
 ## Recommended Contents
+- `decisions/`: Folder for Architecture Decision Records (ADRs) that apply to the whole platform.
 - `ARCHITECTURE.md`: System context, shared diagrams, integration boundaries, and cross-cutting concerns.
 - `DATA_MODELS.md`: Canonical schemas for events, shared tables, or reusable Pydantic models.
 - `OBSERVABILITY.md`: Organization-wide instrumentation and telemetry guidance (e.g., OpenTelemetry usage, shared SLOs).
@@ -11,7 +12,7 @@ Use this folder for documentation that spans multiple services within a monorepo
 - `SECURITY.md`: Shared security posture, control requirements, scanning expectations, and incident response guidance.
 
 ## Optional Files
-If additional cross-service requirements emerge (e.g., shared security controls, incident response runbooks), copy the relevant service template file into this folder and rename it clearly (for example, `SECURITY.shared.md`). Reference these shared docs from each service spec instead of duplicating content.
+If additional cross-service requirements emerge (e.g., incident response runbooks), copy the relevant service template file into this folder and rename it clearly (for example, `RUNBOOKS.shared.md`). Reference these shared docs from each service spec instead of duplicating content.
 
 ## When to add a platform document
 1. Multiple services depend on the same contract or operational process.

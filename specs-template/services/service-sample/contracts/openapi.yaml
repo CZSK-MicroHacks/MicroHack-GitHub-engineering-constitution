@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Service Sample API
+  version: 1.0.0
+  description: |
+    Auto-generated or manually maintained OpenAPI spec.
+    This is the source of truth for the HTTP interface.
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Service is healthy

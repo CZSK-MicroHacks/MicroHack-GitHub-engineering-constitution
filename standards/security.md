@@ -21,7 +21,7 @@ Ensure every MicroHack system is secure by default, auditable, and resilient to 
 - Define security metrics: auth failures, privilege escalations, rate-limit breaches, anomaly scores.
 
 ## 5. Access Control & Data Governance
-- Classify data (Public, Internal, Confidential, Restricted) and document handling rules in `docs/DATA_MODELS.md`.
+- Classify data (Public, Internal, Confidential, Restricted) and document handling rules in `specs/**/DATA_MODELS.md`.
 - Implement role-based access at the API layer; avoid client-enforced authorization.
 - For multi-tenant data, use partition keys (e.g., tenantId) to isolate access and minimize cross-partition queries when using Azure Cosmos DB.
 

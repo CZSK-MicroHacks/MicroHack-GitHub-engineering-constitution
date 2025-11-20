@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package service.sample.v1;
+
+service SampleService {
+  rpc GetHealth (HealthRequest) returns (HealthResponse);
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  bool healthy = 1;
+}

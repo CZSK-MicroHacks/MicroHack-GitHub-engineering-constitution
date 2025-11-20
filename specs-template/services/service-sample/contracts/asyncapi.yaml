@@ -1,0 +1,19 @@
+asyncapi: 2.6.0
+info:
+  title: Service Sample Events
+  version: 1.0.0
+  description: |
+    Definition of events published by this service.
+channels:
+  user/signedup:
+    publish:
+      message:
+        $ref: '#/components/messages/UserSignedUp'
+components:
+  messages:
+    UserSignedUp:
+      payload:
+        type: object
+        properties:
+          userId:
+            type: string

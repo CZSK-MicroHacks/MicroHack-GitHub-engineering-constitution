@@ -3,6 +3,8 @@
 Use this folder to capture specifications for a single service inside a monorepo. Copy `service-sample/` for each microservice and rename the directory to match the service (e.g., `service-auth/`).
 
 Recommended sections:
+- `contracts/`: Folder containing API definitions (OpenAPI, AsyncAPI, Proto, GraphQL) and consumer contracts.
+- `decisions/`: Folder for service-specific Architecture Decision Records (ADRs).
 - `ARCHITECTURE.md`: Service-specific component view and dependencies; link back to `../platform/ARCHITECTURE.md`.
 - `API_REFERENCE.md`: Endpoints, queues, or jobs owned by this service.
 - `DATA_MODELS.md`: Schemas owned by the service or extensions of shared models.

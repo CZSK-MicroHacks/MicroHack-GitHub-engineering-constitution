@@ -8,6 +8,7 @@ specs-template/
 	README.md
 	platform/
 		README.md
+		decisions/
 		ARCHITECTURE.md
 		DATA_MODELS.md
 		OBSERVABILITY.md
@@ -17,6 +18,8 @@ specs-template/
 	services/
 		service-sample/
 			README.md
+			contracts/
+			decisions/
 			ARCHITECTURE.md
 			DATA_MODELS.md
 			API_REFERENCE.md

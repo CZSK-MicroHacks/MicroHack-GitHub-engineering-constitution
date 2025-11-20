@@ -17,11 +17,11 @@
 1. Write/refresh tests when updating specs (requirements, design, data models).
 2. Use red-green-refactor: add failing test per scenario, implement fix, refactor safely.
 3. Keep test data close to specs; prefer builders/factories describing intent.
-4. Update documentation (`docs/TESTING.md`) with new strategies or coverage adjustments.
+4. Update documentation (`specs/**/TESTING.md`) with new strategies or coverage adjustments.
 
 ## 4. Tooling
-- **Python**: `pytest`, `pytest-asyncio`, `pytest-cov`, `mypy`, `ruff`, `pip-audit`.
-- **TypeScript/Frontend**: `jest`/`vitest`, Testing Library, Playwright or Cypress for E2E, MSW for HTTP mocks.
+Specific tooling choices are defined in the respective language engineering standards (e.g., `standards/python.md`, `standards/typescript.md`).
+
 - **Contract Tests**: PACT, OpenAPI schema validation in CI; failing contracts block deployments.
 - **Load/Performance**: k6, Locust, or Azure Load Testing for critical services; document thresholds in PRD/ADR.
 
